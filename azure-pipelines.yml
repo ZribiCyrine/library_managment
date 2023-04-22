@@ -8,8 +8,11 @@ trigger:
 
 pool:
   vmImage: windows-latest
-
+variables:
+  buildDirectory: '$(Agent.TempDirectory)/build'
 steps:
+
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -26,6 +29,6 @@ steps:
 # Publish any of the code coverage results from a build.
 - task: PublishCodeCoverageResults@2
   inputs:
-    summaryFileLocation: # string. Required. Path to summary files. 
+    summaryFileLocation:
     #pathToSources: # string. Path to Source files. 
     #failIfCoverageEmpty: false # boolean. Fail if code coverage results are missing. Default: false.
