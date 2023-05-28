@@ -25,9 +25,9 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String is) {
+    public Book(String title, String isbn) {
         this.title = title;
-        this.isbn = is;
+        this.isbn = isbn;
     }
 
     public Long getId() {
