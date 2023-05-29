@@ -12,7 +12,7 @@
 	<groupId>guru.springframework</groupId>
 	<artifactId>spring5webapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	<packaging>war</packaging>
 	<name>spring5webapp</name>
 
 	<description>Example Spring 5 Web Application</description>
@@ -57,16 +57,27 @@
 			</plugin>
 
 			<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>1.8</source> <!-- Use Java 1.8 -->
-          <target>1.8</target> <!-- Generate classes for Java 1.8 -->
-        </configuration>
-      </plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-compiler-plugin</artifactId>
+        		<version>3.8.1</version>
+        		<configuration>
+          			<source>1.8</source> <!-- Use Java 1.8 -->
+          			<target>1.8</target> <!-- Generate classes for Java 1.8 -->
+        		</configuration>
+      		</plugin>
 
-	  
+			<build>
+	        <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-war-plugin</artifactId>
+            	<version>3.3.1</version>
+            	<configuration>
+                	<failOnMissingWebXml>false</failOnMissingWebXml>
+            	</configuration>
+        	</plugin>
+    </plugins>
+</build>
+
 		</plugins>
 	</build>
 
