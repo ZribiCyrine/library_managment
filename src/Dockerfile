@@ -5,7 +5,7 @@ FROM openjdk:8-jdk
 ENV JAVA_OPTS=""
 
 # Update and install required tools
-RUN apt-get update && apt-get install -y maven
+RUN apt update && apt install -y maven
 
 # Make /app the default working directory
 WORKDIR /app
