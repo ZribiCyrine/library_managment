@@ -1,32 +1,14 @@
-# Use an official Java 8 base image
+# Utilisez une image de base Java (par exemple, openjdk)
 FROM openjdk:8-jdk
 
-# Environment variables for Java
-ENV JAVA_OPTS=""
-
-# Update and install required tools
-RUN powershell -Command "apt update ; apt install -y maven"
-
-# Make /app the default working directory
+# Définissez le répertoire de travail dans le conteneur Docker
 WORKDIR /app
 
-# Add the .mvn/wrapper directory into the container
-ADD .mvn/wrapper /app/.mvn/wrapper
+# Copiez le fichier JAR dans le conteneur Docker
+COPY target/spring5webapp-0.0.1-SNAPSHOT.jar /app
 
-# Add the mvnw and mvnw.cmd command files into the container
-ADD mvnw /app
-ADD mvnw.cmd /app
-
-# Add the pom.xml, src files, and other necessary files into the container
-ADD pom.xml /app
-ADD src /app/src
-
-# Build the project using Maven Wrapper
-RUN chmod +x ./mvnw
-RUN ./mvnw package
-
-# Expose the port your application will run on
+# Exposez le port que votre application utilise (par exemple, 8080 pour une application Spring Boot)
 EXPOSE 8080
 
-# Run the application
-CMD ["java", "-jar", "target/library-managment.jar"]
+# Définissez la commande pour exécuter votre application
+CMD ["java", "-jar", "/app/spring5webapp-0.0.1-SNAPSHOT.jar"]
